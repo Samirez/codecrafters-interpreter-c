@@ -25,13 +25,8 @@ int main(int argc, char *argv[])
 
         char *file_contents = read_file_contents(argv[2]);
 
-        // TODO: Uncomment the code below to pass the first stage
-        if (strlen(file_contents) > 0)
-        {
-            fprintf(stderr, "Scanner not implemented\n");
-            exit(1);
-        }
-        printf("EOF  null\n"); // Placeholder, replace this line when implementing the scanner
+        printf("%s", file_contents);
+        
 
         free(file_contents);
     }

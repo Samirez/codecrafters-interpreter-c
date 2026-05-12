@@ -37,11 +37,11 @@ int main(int argc, char *argv[])
                 continue;
             } else if (*file_contents == '(')
             {
-                printf("LEFT_PAREN %s null\n", file_contents);
+                printf("LEFT_PAREN %s null\n", *file_contents);
                 file_contents++; // Move past the null terminator for the next token
             } else if (*file_contents == ')')
             {
-                printf("RIGHT_PAREN %s null\n", file_contents);
+                printf("RIGHT_PAREN %s null\n", *file_contents);
                 file_contents++; // Move past the null terminator for the next token
             } else {
                 file_contents++; // Move past the null terminator for the next token

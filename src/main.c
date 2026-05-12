@@ -29,30 +29,13 @@ int main(int argc, char *argv[])
         while (*file_contents)
         {
             // Skip leading whitespace
-            if (file_contents == ' ' || 
-                file_contents == '\t' || 
-                file_contents == '\n')
+            if (*file_contents == ' ' || 
+                *file_contents == '\t' || 
+                *file_contents == '\n')
             {
                 file_contents++;
                 continue;
-            }
-
-            if (*file_contents == '\0')
-            {
-                break;
-            }
-
-            // Find the end of the token
-            while (*file_contents && *file_contents != ' ' && *file_contents != '\t' && *file_contents != '\n')
-            {
-                file_contents++;
-            }
-
-            // Null-terminate the token
-            char temp = *file_contents;
-            *file_contents = '\0';
-
-            if (*file_contents == '(')
+            } else if (*file_contents == '(')
             {
                 printf("LEFT_PAREN %s null\n", file_contents);
                 file_contents++; // Move past the null terminator for the next token
@@ -63,10 +46,6 @@ int main(int argc, char *argv[])
             } else {
                 file_contents++; // Move past the null terminator for the next token
             }
-            
-
-            // Restore the character and move to the next token
-            *file_contents = temp;
         }
         
         printf("EOF  null\n");

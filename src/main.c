@@ -52,11 +52,11 @@ int main(int argc, char *argv[])
             char temp = *file_contents;
             *file_contents = '\0';
 
-            if (strcmp(start, "(") == 0)
+            if (*file_contents == '(')
             {
                 printf("LEFT_PAREN %s null\n", start);
                 file_contents++; // Move past the null terminator for the next token
-            } else if (strcmp(start, ")") == 0)
+            } else if (*file_contents == ')')
             {
                 printf("RIGHT_PAREN %s null\n", start);
                 file_contents++; // Move past the null terminator for the next token

@@ -52,23 +52,22 @@ int main(int argc, char *argv[])
             char temp = *file_contents;
             *file_contents = '\0';
 
-            if (*file_contents == '(')
+            if (*start == '(')
             {
                 printf("LEFT_PAREN %s null\n", start);
                 file_contents++; // Move past the null terminator for the next token
-            } else if (*file_contents == ')')
+            } else if (*start == ')')
             {
                 printf("RIGHT_PAREN %s null\n", start);
                 file_contents++; // Move past the null terminator for the next token
             }
             
-            printf("EOF null\n");
 
             // Restore the character and move to the next token
             *file_contents = temp;
         }
         
-
+        printf("EOF null\n");
         free(origin);
     }
     else

@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
             *file_contents = temp;
         }
         
-        printf("EOF null\n");
+        printf("EOF  null\n");
         free(origin);
     }
     else

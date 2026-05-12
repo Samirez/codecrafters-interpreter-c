@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Logs from your program will appear here!\n");
 
         char *file_contents = read_file_contents(argv[2]);
+        char *origin = file_contents; // Keep the original pointer for freeing later
 
         while (*file_contents)
         {
@@ -54,9 +55,11 @@ int main(int argc, char *argv[])
             if (strcmp(start, "(") == 0)
             {
                 printf("LEFT_PAREN %s null\n", start);
+                file_contents++; // Move past the null terminator for the next token
             } else if (strcmp(start, ")") == 0)
             {
                 printf("RIGHT_PAREN %s null\n", start);
+                file_contents++; // Move past the null terminator for the next token
             }
             
             printf("EOF null\n");
@@ -66,7 +69,7 @@ int main(int argc, char *argv[])
         }
         
 
-        free(file_contents);
+        free(origin);
     }
     else
     {

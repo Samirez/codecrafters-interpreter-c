@@ -25,7 +25,45 @@ int main(int argc, char *argv[])
 
         char *file_contents = read_file_contents(argv[2]);
 
-        printf("%s", file_contents);
+        while (*file_contents)
+        {
+            // Skip leading whitespace
+            while (*file_contents && (*file_contents == ' ' || *file_contents == '\t' || *file_contents == '\n'))
+            {
+                file_contents++;
+            }
+
+            if (*file_contents == '\0')
+            {
+                break;
+            }
+
+            // Start of a token
+            char *start = file_contents;
+
+            // Find the end of the token
+            while (*file_contents && *file_contents != ' ' && *file_contents != '\t' && *file_contents != '\n')
+            {
+                file_contents++;
+            }
+
+            // Null-terminate the token
+            char temp = *file_contents;
+            *file_contents = '\0';
+
+            if (strcmp(start, "(") == 0)
+            {
+                printf("LEFT_PAREN %s null\n", start);
+            } else if (strcmp(start, ")") == 0)
+            {
+                printf("RIGHT_PAREN %s null\n", start);
+            }
+            
+            printf("EOF null\n");
+
+            // Restore the character and move to the next token
+            *file_contents = temp;
+        }
         
 
         free(file_contents);

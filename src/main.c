@@ -39,9 +39,6 @@ int main(int argc, char *argv[])
                 break;
             }
 
-            // Start of a token
-            char *start = file_contents;
-
             // Find the end of the token
             while (*file_contents && *file_contents != ' ' && *file_contents != '\t' && *file_contents != '\n')
             {
@@ -52,13 +49,15 @@ int main(int argc, char *argv[])
             char temp = *file_contents;
             *file_contents = '\0';
 
-            if (*start == '(')
+            if (*file_contents == '(')
             {
-                printf("LEFT_PAREN %s null\n", start);
+                printf("LEFT_PAREN %s null\n", file_contents);
                 file_contents++; // Move past the null terminator for the next token
-            } else if (*start == ')')
+            } else if (*file_contents == ')')
             {
-                printf("RIGHT_PAREN %s null\n", start);
+                printf("RIGHT_PAREN %s null\n", file_contents);
+                file_contents++; // Move past the null terminator for the next token
+            } else {
                 file_contents++; // Move past the null terminator for the next token
             }
             

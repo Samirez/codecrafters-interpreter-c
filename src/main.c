@@ -29,9 +29,12 @@ int main(int argc, char *argv[])
         while (*file_contents)
         {
             // Skip leading whitespace
-            while (*file_contents && (*file_contents == ' ' || *file_contents == '\t' || *file_contents == '\n'))
+            if (file_contents == ' ' || 
+                file_contents == '\t' || 
+                file_contents == '\n')
             {
                 file_contents++;
+                continue;
             }
 
             if (*file_contents == '\0')
